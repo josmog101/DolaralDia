@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:CustomControls="clr-namespace:Dolaraldia.CustomControls"
+             xmlns:local="clr-namespace:Dolaraldia"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="Dolaraldia.Views.HomeNewPage"
+             Title="Dólar al Día"
+             BackgroundColor="#f3f4f6">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <CustomControls:CurrencyConverter x:Key="currencyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="ic_action_autorenew" Command="{Binding RefreshToolbarCommand}"/>
+        <ToolbarItem
+            IconImageSource="ic_action_share" Command="{Binding ShareFastToolbarCommand}"/>
+        <ToolbarItem
+            IconImageSource="ic_action_more_vert" Command="{Binding MyShareToolbarCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding Home, Mode=TwoWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="0,0,0,50"
+                IsVisible="{Binding IsVisibleLoadData, Mode=TwoWay}">
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Pancake:PancakeView
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            HeightRequest="200"
+                            BackgroundGradientStartColor="#011A82"
+                            BackgroundGradientEndColor="#3061f2"
+                            CornerRadius="0,0,0,0">
+                        </Pancake:PancakeView>
+                        <Pancake:PancakeView
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="12,-100,12,10"
+                            BackgroundColor="White"
+                            HeightRequest="185"
+                            CornerRadius="10">
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Margin="12,15,0,0"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start"
+                                        HeightRequest="40"
+                                        Source="logo_dolar_al_dia"/>
+                                    <StackLayout
+                                        Margin="0,15,0,0"
+                                        Grid.Column="0"
+                                        Grid.Row="0">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            TextColor="#011A82"
+                                            Text="Precio actual"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                Margin="0,15,0,0"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Orientation="Horizontal">
+                                                <Label
+                                                    TextColor="#011A82"
+                                                    FontSize="43"
+                                                    FontAttributes="Bold"
+                                                    VerticalOptions="End"
+                                                    Text="Bs."/>
+                                                <Label
+                                                    TextColor="#011A82"
+                                                    FontAttributes="Bold" 
+                                                    FontSize="45"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Text="{Binding PriceDolar, Mode=TwoWay, Converter={StaticResource currencyConverter}}" />
+                                                <Image
+                                                    HeightRequest="18"
+                                                    Margin="0,0,0,10"
+                                                    HorizontalOptions="Fill"
+                                                    VerticalOptions="End"
+                                                    Source="ic_copy_blue_dark">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding CopyTextCommand}"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                Margin="0,0,15,5"
+                                                HorizontalOptions="End"
+                                                Orientation="Horizontal">
+                                                <Image
+                                                    VerticalOptions="End"
+                                                    Margin="0,0,-3,4"
+                                                    HeightRequest="12"
+                                                    Source="{Binding IconViewDolar, Mode=TwoWay}"/>
+                                                <Label
+                                                    VerticalOptions="End"
+                                                    FontSize="14"
+                                                    TextColor="{Binding ColorTextDolar, Mode=TwoWay}"
+                                                    Text="{Binding ValuePorcentDolar, Mode=TwoWay}"/>
+                                            </StackLayout>
+                                        </Grid>
+                                        <Grid
+                                            Margin="0,5,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                HorizontalOptions="Center">
+                                                <Label
+                                                    FontSize="14"
+                                                    FontAttributes="Bold"
+                                                    TextColor="#011A82"
+                                                    HorizontalOptions="Center"
+                                                    Text="Fecha"/>
+                                                <Label
+                                                    FontSize="14"
+                                                    FontAttributes="Bold"
+                                                    Margin="0,-7,0,0"
+                                                    TextColor="#011A82"
+                                                    Text="05/10/2021"/>
+                                            </StackLayout>
+                                            <StackLayout
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                HorizontalOptions="Center">
+                                                <Label
+                                                    FontSize="14"
+                                                    FontAttributes="Bold"
+                                                    TextColor="#011A82"
+                                                    HorizontalOptions="Center"
+                                                    Text="Hora"/>
+                                                <Label
+                                                    FontSize="14"
+                                                    FontAttributes="Bold"
+                                                    Margin="0,-7,0,0"
+                                                    TextColor="#011A82"
+                                                    Text="01:00 pm"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Pancake:PancakeView>
+                        <Pancake:PancakeView
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Padding="0"
+                            BackgroundColor="White"
+                            Margin="0,-7,0,10">
+                            <StackLayout>
+                                <Pancake:PancakeView 
+                                    Margin="12,15,12,5"
+                                    BackgroundColor="#31FFFFFF"
+                                    BorderColor="#ddd"                    
+                                    BorderThickness="1"
+                                    CornerRadius="8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="20"
+                                            Margin="10,0,12,0"
+                                            TextColor="#011A82"
+                                            Text="$"/>
+                                        <CustomControls:StandardEntry
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            HeightRequest="52"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="FillAndExpand"
+                                            Margin="0,0,0,0"
+                                            Padding="5,0,10,0"
+                                            TextColor="#011A82"
+                                            VerticalOptions="Center"
+                                            Keyboard="Numeric"
+                                            Placeholder="0,00"             
+                                            TextChanged="StandardEntry_TextChanged"
+                                            x:Name="EntryDolar"
+                                            Text="{Binding TxtDolar, Converter={StaticResource currencyConverter}}"/>
+                                        <Image
+                                            Grid.Column="2"
+                                            Grid.Row="0"
+                                            Margin="0,0,10,0"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="17"
+                                            Source="ic_copy_blue_dark">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding CopyTextDolarBsCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Pancake:PancakeView>
+                                <Pancake:PancakeView 
+                                    Margin="12,0,12,0"
+                                    BackgroundColor="#31FFFFFF"
+                                    BorderColor="#ddd"                    
+                                    BorderThickness="1"
+                                    CornerRadius="8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment="Start"
+                                            FontSize="18"
+                                            Margin="10,0,0,0"
+                                            TextColor="#011A82"
+                                            Text="Bs."/>
+                                        <CustomControls:StandardEntry
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            HeightRequest="52"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="FillAndExpand"
+                                            Margin="0,0,0,0"
+                                            Padding="5,0,10,0"
+                                            TextColor="#011A82"
+                                            VerticalOptions="Center"
+                                            Keyboard="Numeric"
+                                            Placeholder="0,00"
+                                            TextChanged="StandardEntry_TextChanged_2"
+                                            x:Name="EntryBsD"
+                                            Text="{Binding TxtBsD, Converter={StaticResource currencyConverter}}"/>
+                                        <Image
+                                            Grid.Column="2"
+                                            Grid.Row="0"
+                                            Margin="0,0,10,0"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="17"
+                                            Source="ic_copy_blue_dark">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding CopyTextBsDigitalCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Pancake:PancakeView>
+                                <Button
+                                    Margin="12,15,12,12"
+                                    CornerRadius="5"
+                                    BackgroundColor="#011A82"
+                                    TextColor="White"
+                                    Command="{Binding ClearDataCommand}"
+                                    Text="Borrar"/>
+                            </StackLayout>
+                        </Pancake:PancakeView>
+                    </Grid>
+                    <Label
+                        Margin="12,0,12,14"
+                        Text="Historial"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <Pancake:PancakeView
+                        IsVisible="{Binding IsVisibleTextNotData, Mode=TwoWay}"
+                        BackgroundColor="White" 
+                        CornerRadius="25" 
+                        HasShadow="False" 
+                        Margin="12,0,12,0">
+                        <Label 
+                            Margin="5,5"
+                            HorizontalOptions="Center"
+                            Text="Información no disponible"/>
+                    </Pancake:PancakeView>
+                    <Pancake:PancakeView
+                        IsVisible="{Binding IsVisibletDataHistoryView, Mode=TwoWay}"
+                        Padding="0"
+                        Margin="0,-7,0,10">
+                        <StackLayout
+                            Margin="12,0,12,12"
+                            BindableLayout.ItemsSource="{Binding ListHistory, Mode=TwoWay}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            Grid.Row="0">
+                                            <Pancake:PancakeView
+                                                Margin="0,0,0,0"
+                                                Padding="5"
+                                                BackgroundColor="#ddd"
+                                                CornerRadius="5">
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Image  
+                                                        Source="ic_calendar"
+                                                        HeightRequest="20"
+                                                        Margin="0,0,0,0"/>
+                                                    <Label
+                                                        TextColor="#011A82"
+                                                        FontAttributes="Bold"
+                                                        Text="{Binding DateGroup, Mode=TwoWay}"/>
+                                                </StackLayout>
+                                            </Pancake:PancakeView>
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            BindableLayout.ItemsSource="{Binding PriceData, Mode=TwoWay}">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout
+                                                        Margin="0,5,0,0">
+                                                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
+                                                            <!-- Schedule time-->
+                                                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding HourPrice}" Margin="0,0,0,0" TextColor="#535257" FontAttributes="Bold" VerticalOptions="Start"/>
+                                                            <!-- Vertical Line-->
+                                                            <!--  <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" WidthRequest="4" Color="Silver" HeightRequest="10" Margin="10,25,50,0" /> -->
+                                                            <!-- Here add the code that is being explained in the "Market bar" block-->
+                                                            <Pancake:PancakeView Grid.Row="0"  Grid.Column="1" BackgroundColor="White" CornerRadius="25" HasShadow="False" Margin="5,0,10,0">
+                                                                <Grid
+                                                                    Margin="0,5,10,5">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Label
+                                                                        Grid.Column="0"
+                                                                        Grid.Row="0"
+                                                                        Margin="0,0,20,0"
+                                                                        HorizontalOptions="CenterAndExpand"
+                                                                        TextColor="#011A82">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="Bs. "/>
+                                                                                <Span Text="{Binding Price, Converter={StaticResource currencyConverter}}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                    <StackLayout
+                                                                        HorizontalOptions="End"
+                                                                        Grid.Column="0"
+                                                                        Grid.Row="0"
+                                                                        Orientation="Horizontal">
+                                                                        <Image
+                                                                            HorizontalOptions="End"
+                                                                            Margin="0,0,0,4"
+                                                                            HeightRequest="14"
+                                                                            Source="{Binding IconView, Mode=TwoWay}" />
+                                                                        <Label
+                                                                            HorizontalOptions="End"
+                                                                            TextColor="{Binding ColorText, Mode=TwoWay}"
+                                                                            Text="{Binding ValuePorcent, Mode=TwoWay}" />
+                                                                    </StackLayout>
+                                                                </Grid>
+                                                            </Pancake:PancakeView>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </Pancake:PancakeView>
+                </StackLayout>
+            </ScrollView>
+            <CustomControls:AdControlView 
+                Grid.Column="0"
+                Grid.Row="0"
+                VerticalOptions="End"
+                HeightRequest="50"
+                AdUnitId="{Static local:Constants.AdUnitIdTest}"
+                HorizontalOptions="FillAndExpand" />
+            <ContentView
+                Grid.Column="0"
+                Grid.Row="0"
+                BackgroundColor="Transparent"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsVisibleLoad, Mode=TwoWay}">
+                <ActivityIndicator
+                    IsVisible="true"
+                    IsRunning="True"
+                    Color="#1a237e"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="40"
+                    WidthRequest="40"/>
+            </ContentView>
+            <ContentView                           
+                Grid.Column="0"
+                Grid.Row="0"
+                BackgroundColor="Transparent" Padding="10,0" IsVisible="{Binding IsVisibleReloadData, Mode=TwoWay}" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="Transparent">
+                        <Image Source="nube" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest = "80"></Image>
+                        <Label TextColor="Red" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="Center" Text = "Reintentar">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ReloadDataCartCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "112615451025",
+    "project_id": "dolar-al-dia-e89b9",
+    "storage_bucket": "dolar-al-dia-e89b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112615451025:android:0cefd6bb594d3bee851230",
+        "android_client_info": {
+          "package_name": "com.corpotecguayana.dolaraldia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112615451025-4ia9jgm6g3vbtmmj12eprhm3dib5jnpt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1I7yyzW83VFJh7yEMhWTkKc-kzNVMD2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112615451025-4ia9jgm6g3vbtmmj12eprhm3dib5jnpt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

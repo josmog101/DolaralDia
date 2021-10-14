@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:infra="clr-namespace:Dolaraldia.Infraestructure"
+             x:Class="Dolaraldia.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <infra:InstanceLocator x:Key="Locator"/>
+            <!-- <x:String x:Key="ApiSecurity">http://127.0.0.1/apidolarhoy/webservice.php</x:String> -->
+            <x:String x:Key="ApiSecurity">http://dolaraldia.corpotecguayana.com/apidolaraldia/webservice.php</x:String>
+            <x:String x:Key="UrlGooglePlay">https://play.google.com/store</x:String>
+            <x:String x:Key="AccessServer">44df4f3c705eede8e5e9c7bef5f102f9a91ba7be92b3af1103b0f2cac45f6292bc02b1b14d6bdb3c31615b8eb31417f044efd4ef8f1b8fbdcf59ca435e68a</x:String>
+            <x:String x:Key="AccessKeyServer">c45ac94f38dd4e1a19f4505f04c90ecd4a087d075b72b4d9ff77f2ede1b405e1ff140bc995e7d4dad8d80cd1ac9b911d7cc8304f65109c0b03cccbaafd28c</x:String>
+            <x:String x:Key="AccessApiKey">0ba5fff3b413a0e683a22f9011e60c6ece8e31d5a23a64c44c6fdcc0f1d1feadc5ce6d2fe8fc8c0c8ffab96466105a25d085f3df3a53173f7cea9f52de637</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

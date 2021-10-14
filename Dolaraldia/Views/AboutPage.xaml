@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="Dolaraldia.Views.AboutPage"
+             Title="Acerca de"
+             BackgroundColor="#f3f4f6">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                VerticalOptions="FillAndExpand">
+                <Image
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    HeightRequest="250"
+                    Margin="20,5,20,5"
+                    Source="logo_splash"/>
+                <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    Margin="16,0">
+                    <Label 
+                        Margin="0,0"
+                        TextType="Html"
+                        FontSize="14"
+                        Text="Somos un monitor del dólar en Venezuela, con promedio de distintas fuentes de tasas de cambio."
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="CenterAndExpand" />
+                    <Label 
+                        Margin="0,7,16,0"
+                        TextType="Html"
+                        FontSize="14"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="CenterAndExpand" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Dólar al Día " FontAttributes="Bold"/>
+                                <Span Text="posee una calculadora virtual de dólares."/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label 
+                        Margin="0,7,16,0"
+                        TextType="Html"
+                        FontSize="14"
+                        Text="Contamos con historial del precio del dólar de los últimos días."
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="CenterAndExpand" />
+                    <Label 
+                        Margin="0,7,16,0"
+                        TextType="Html"
+                        FontSize="14"
+                        Text="Comparte la tasa del día desde la aplicación."
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout
+                    Margin="16,12"
+                    VerticalOptions="End">
+                    <Label
+                        TextColor="Black"
+                        Text="Elaborado Octubre 2021" />
+                    <Label
+                        TextColor="Black"
+                        Text="Version 1.0" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
